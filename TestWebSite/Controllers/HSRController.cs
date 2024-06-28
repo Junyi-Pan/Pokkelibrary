@@ -42,5 +42,37 @@ namespace TestWebSite.Controllers
         {
             return View();
         }
+        public IActionResult Argenti()
+        {
+            return View();
+        }
+        public IActionResult Luka()
+        {
+            return View();
+        }
+        public IActionResult Sushang()
+        {
+            return View();
+        }
+        public IActionResult Clara()
+        {
+            return View();
+        }
+        public IActionResult Natasha()
+        {
+            return View();
+        }
+        public IActionResult DestructionMC()
+        {
+            return View();
+        }
+        public IActionResult Boothill()
+        {
+            return View();
+        }
+        public IActionResult Robin()
+        {
+            return View();
+        }
     }
 }

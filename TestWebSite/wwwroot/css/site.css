@@ -20,8 +20,18 @@ html {
 body {
     margin-bottom: 60px;
     background-color: #1A1A1A;
-    color: white;
+    color: #ead3a9;
 }
+
+body a {
+    color: red;
+}
+
+body a:hover {
+    color: #9B320A;
+    text-decoration: none;
+}
+
 
 ol a {
     color: #fff;
@@ -29,4 +39,54 @@ ol a {
 }
 ol ::marker {
     font-size: clamp(24px, 4vw, 16px);
+}
+
+hr.dashed {
+    border-top: 3px dashed #bbb;
+}
+
+.logo {
+    border-radius: 2px;
+    height: 36px;
+    margin-top: -1px;
+    object-fit: cover;
+    width: 36px;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.navbar, .dropdown-menu {
+    color: #ead3a9;
+    background-color: #1A1A1A;
+}
+.nav-link, .nav-link:hover{
+    color: #ead3a9 !important; 
+}
+#myVideo {
+    border: 0;
+    bottom: 0;
+    box-shadow: none;
+    height: 950px;
+    left: 0;
+    margin: 0;
+    object-fit: cover;
+    outline: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    filter: brightness(50%);
+    
+}
+.block {
+    display: block;
+    unicode-bidi: isolate;
+}
+.centered {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
