@@ -74,5 +74,9 @@ namespace TestWebSite.Controllers
         {
             return View();
         }
+        public IActionResult Firefly()
+        {
+            return View();
+        }
     }
 }
