@@ -1,3 +1,12 @@
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.AzureKeyVault;
+using TestWebSite.Models;
+
 namespace TestWebSite
 {
     public class Program
@@ -8,6 +17,13 @@ namespace TestWebSite
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var keyVaultURL = new Uri(builder.Configuration.GetSection("KeyVaultURL").Value!);
+            
+            builder.Configuration.AddAzureKeyVault(keyVaultURL, new DefaultAzureCredential());
+            var conn = builder.Configuration.GetSection("Conns").Value;
+
+            builder.Services.AddDbContext<AzureContext>(options => options.UseSqlServer(conn));
 
             var app = builder.Build();
 

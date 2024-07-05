@@ -1,0 +1,181 @@
+﻿@{
+    ViewData["Title"] = "Speed Guide";
+    Layout = "~/Views/Shared/_HSRLayout.cshtml";
+}
+<h1>The Only Speed Guide You Need</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="/img/speedslides/27.png" style="width:100%">
+                <div class="numbertext">1 / 7</div>
+            </div>
+
+            <div class="mySlides">
+                <img src="/img/speedslides/28.png" style="width:100%">
+                <div class="numbertext">2 / 7</div>
+            </div>
+
+            <div class="mySlides">
+                <img src="/img/speedslides/29.png" style="width:100%">
+                <div class="numbertext">3 / 7</div>
+            </div>
+            <div class="mySlides">
+                <img src="/img/speedslides/30.png" style="width:100%">
+                <div class="numbertext">4 / 7</div>
+            </div>
+            <div class="mySlides">
+                <img src="/img/speedslides/31.png" style="width:100%">
+                <div class="numbertext">5 / 7</div>
+            </div>
+            <div class="mySlides">
+                <img src="/img/speedslides/32.png" style="width:100%">
+                <div class="numbertext">6 / 7</div>
+            </div>
+            <div class="mySlides">
+                <img src="/img/speedslides/33.png" style="width:100%">
+                <div class="numbertext">7 / 7</div>
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusDivs(-1)">&#10094;</a>
+            <a class="next" onclick="plusDivs(1)">&#10095;</a>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="text-center">
+            <iframe width="600" height="338"
+                    src="https://www.youtube.com/embed/U0Zmw6TB1SY">
+            </iframe>
+        </div>
+    </div>
+</div>
+<div style="height:50px" aria-hidden="true"></div>
+<div class="row">
+    <h3>Major speed brakepoints:</h3>
+    <table class="table-bordered" style="width: 100%">
+        <tr>
+            <td>
+                <h5>134 Speed</h5>
+            </td>
+            <td>
+                <h5 style="white-space: pre-line">
+                    This is the recommended speed for most units allowing them to have 2 actions in the first cycle.
+                </h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>143 Speed</h5>
+            </td>
+            <td>
+                <h5 style="white-space: pre-line">
+                    This is the next breakpoint where units with this speed have 1 more action in the third cycle.
+                </h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>160 Speed</h5>
+            </td>
+            <td>
+                <h5 style="white-space: pre-line">
+                    This is the highest speed recommend for units allowing 1 more action in the second cycle.
+                    This is a speed only recommended for units running Planertary set Firmament Frontline: Glamoth, or supportive units as they require less substats.
+                    Although 172 speed would allow another action in the third cycle, too much substat is sacrificed for it, and it would be better to spend the resources on another character.
+                </h5>
+            </td>
+        </tr>
+    </table>
+</div>
+<div style="height:50px" aria-hidden="true"></div>
+<h3>Following is a slider to see how many action your units can make in the first 3 cycles of battle.</h3>
+<h3>Assuming no further speed buff or action advances.</h3>
+<div style="height:30px" aria-hidden="true"></div>
+<div class="slidecontainer">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4>1 Cycle: <span id="cycle1"></span> <span id="action"></span></h4>
+        </div>
+        <div class="col-sm-4">
+            <h4>2 Cycles: <span id="cycle2"></span> Actions</h4>
+        </div>
+        <div class="col-sm-4">
+            <h4>3 Cycles: <span id="cycle3"></span> Actions</h4>
+        </div>
+    </div>
+    <input type="range" min="90" max="180" value="90" class="slider" id="myRange">
+    <h4>Unit Speed: <span id="speed"></span></h4>
+    
+</div>
+
+<script>
+    let rangeslider = document.getElementById("myRange");
+    let output = document.getElementById("speed");
+    let cycle1 = document.getElementById("cycle1");
+    let cycle2 = document.getElementById("cycle2");
+    let cycle3 = document.getElementById("cycle3");
+    let total = document.getElementById("total");
+    let action = document.getElementById("action")
+    output.innerHTML = rangeslider.value;
+    cycle1.innerHTML = 1;
+    cycle2.innerHTML = 2;
+    cycle3.innerHTML = 3;
+    action.innerHTML = "Action";
+    
+    rangeslider.oninput = function () {
+        output.innerHTML = this.value;
+        if (rangeslider.value < 115) {
+            cycle1.innerHTML = 1;
+            cycle2.innerHTML = 2;
+            cycle3.innerHTML = 3;
+        } else if (rangeslider.value < 120) {
+            cycle1.innerHTML = 1;
+            cycle2.innerHTML = 2;
+            cycle3.innerHTML = 4;
+        } else if (rangeslider.value < 134) {
+            cycle1.innerHTML = 1;
+            cycle2.innerHTML = 3;
+            cycle3.innerHTML = 4;
+        } else if (rangeslider.value < 143) {
+            cycle1.innerHTML = 2;
+            cycle2.innerHTML = 3;
+            cycle3.innerHTML = 4;
+        } else if (rangeslider.value < 160) {
+            cycle1.innerHTML = 2;
+            cycle2.innerHTML = 3;
+            cycle3.innerHTML = 5;
+        } else if (rangeslider.value < 172) {
+            cycle1.innerHTML = 2;
+            cycle2.innerHTML = 4;
+            cycle3.innerHTML = 5;
+        } else {
+            cycle1.innerHTML = 2;
+            cycle2.innerHTML = 4;
+            cycle3.innerHTML = 6;
+        }
+        if (cycle1.innerHTML > 1) {
+            action.innerHTML = "Actions";
+        } else {
+            action.innerHTML = "Action";
+        }
+    }
+
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+</script>

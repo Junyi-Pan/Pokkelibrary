@@ -1,0 +1,25 @@
+﻿@model TestWebSite.Models.Newsletter
+@{
+    ViewData["Title"] = "Honkai Star Rail";
+    Layout = "~/Views/Shared/_HSRLayout.cshtml";
+}
+<div class="text-center">
+    <img src="~/img/pokkekururinfast.gif" width="360" height="255"/>
+    <h1 style="color: red; white-space: pre-line">
+        POKKE'S
+        LETTER
+    </h1>
+    <p>IN-DEPTH HSR CONTENT, GUIDES AND MORE.</p>
+    <div class="newscontainer">
+        <div class="newscontent">
+            <form class="subscription" id="subscribe" asp-action="Create">
+                <input required asp-for="Email" class="email" type="email" placeholder="Type your email">
+                <button class="submit" type="submit">
+                    <span class="before-submit">Subscribe</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <p></p>
+    <p>@ViewData["Message"]</p>
+</div>
